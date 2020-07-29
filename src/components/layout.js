@@ -14,7 +14,11 @@ import Footer from './footer'
 import '../css/styles.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
-AOS.init();
+AOS.init({
+    disable: 'mobile',
+    duration: 600,
+    once: true
+});
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -29,16 +33,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <Footer />
+      <div id="layoutDefault">
+        <div id="layoutDefault_content">
+          <main>
+            <Header siteTitle={data.site.siteMetadata.title} />
+            {children}
+          </main>
+        </div>
+        <div id="layoutDefault_footer">
+          <Footer />
+        </div>
       </div>
     </>
   )
