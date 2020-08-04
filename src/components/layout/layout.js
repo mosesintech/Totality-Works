@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from './footer'
-import '../css/styles.css'
+import '../../css/styles.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 AOS.init({
