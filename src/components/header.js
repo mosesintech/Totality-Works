@@ -35,7 +35,7 @@ const Header = ({ siteTitle }) => (
                         if(!item.node.label.toLowerCase().includes('contact')){
                             return <li className="nav-item"><Link className="nav-link" to={`${item.node.label.toLowerCase()}`}>{item.node.label}</Link></li>
                         } else if(item.node.label.toLowerCase().includes('contact')){
-                            return <Link className="btn-teal btn rounded-pill px-4 ml-lg-4" to={`${item.node.label.toLowerCase()}`}>{item.node.label.toUpperCase()}<i className="fas fa-arrow-right ml-1"></i></Link>
+                            return <Link className="btn-teal btn rounded-pill px-4 ml-lg-4" to={`${item.node.label.toLowerCase().split(" ").shift()}`}>{item.node.label.toUpperCase()}<i className="fas fa-arrow-right ml-1"></i></Link>
                         }
                     })}
                 </ul>
