@@ -1,17 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout/layout'
-import SEO from '../components/seo'
+import Default from '../components/pages/default'
+import Articles from '../components/pages/articles'
 
 const PageTemplate = ({ data }) => {
     const page = data.wpgraphql.page
-    return (
-        <Layout>
-            <SEO title={page.title} />
-            <h1>{page.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: page.content }} />
-        </Layout>
-    )
+    const { title } = data.wpgraphql.page;
+    switch (title) {
+        case 'Articles':
+          return <Articles {...page} />
+        default:
+          return <Default {...page} />
+    }
 }
 
 export default PageTemplate
