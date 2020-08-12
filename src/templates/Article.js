@@ -2,9 +2,10 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
+import SocialShare from '../components/social'
 
 const ArticleTemplate = ({ data }) => {
-    const { title, date, content, subtitle, categories } = data.wpgraphql.post;
+    const { title, date, slug, content, subtitle, categories, featuredImage } = data.wpgraphql.post;
     return (
         <Layout>
             <SEO title={title} />
@@ -21,7 +22,6 @@ const ArticleTemplate = ({ data }) => {
                                     )
                                 })}
                                 <br />
-                                <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,13 @@ const ArticleTemplate = ({ data }) => {
                 </div>
             </header>
             <section class="bg-white py-10">
-                <div class="container" dangerouslySetInnerHTML={{ __html: content }} />
+                <div class="container">
+                    <img src={featuredImage.node.sourceUrl} alt={featuredImage.node.altText} class="aligncenter" style={{width: '100%', marginBottom: '2%'}} />
+                    <p>Last updated on <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link></p>
+                    <SocialShare slug={slug} title={title} />
+                    <article dangerouslySetInnerHTML={{ __html: content }} />
+                    <SocialShare slug={slug} title={title} />
+                </div>
             </section>
         </Layout>
     )
@@ -45,6 +51,7 @@ export const query = graphql`
             post(id: $id) {
                 title
                 date
+                slug
                 content
                 subtitle {
                     subtitle
@@ -53,6 +60,12 @@ export const query = graphql`
                     nodes {
                         name
                         slug
+                    }
+                }
+                featuredImage {
+                    node {
+                        sourceUrl
+                        altText
                     }
                 }
             }
