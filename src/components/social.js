@@ -5,6 +5,10 @@ const SocialShare = (props) => {
         <>
         <hr />
         <div>
+            <h5 style={{display: "inline"}}>SHARE:</h5>
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <a href={`https://twitter.com/intent/tweet/?text=${props.title}&url=https://totalityworks.com/articles/${props.slug}%2F&via=totalityworks`} target="_blank" rel="noreferrer noopener">
                 <span>
                     <svg
@@ -23,6 +27,8 @@ const SocialShare = (props) => {
                     </svg>
                 </span> 
             </a>
+            &nbsp;
+            &nbsp;
             <a href={`https://www.facebook.com/sharer/sharer.php?u=https://totalityworks.com/articles/${props.slug}`} target="_blank" rel="noreferrer noopener">
                 <span>
                     <svg
@@ -41,6 +47,8 @@ const SocialShare = (props) => {
                     </svg>
                 </span> 
             </a>
+            &nbsp;
+            &nbsp;
             <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://totalityworks.com/${props.slug}&title=${props.title}&source=${props.title}`} target="_blank" rel="noreferrer noopener">
                 <span>
                     <svg
