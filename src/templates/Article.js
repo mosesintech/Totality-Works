@@ -1,10 +1,10 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 
 const ArticleTemplate = ({ data }) => {
-    const { title, content, subtitle } = data.wpgraphql.post;
+    const { title, content, subtitle, categories } = data.wpgraphql.post;
     return (
         <Layout>
             <SEO title={title} />
@@ -15,6 +15,11 @@ const ArticleTemplate = ({ data }) => {
                             <div class="col-lg-8">
                                 <h1 class="page-header-title mb-3">{title}</h1>
                                 <p class="page-header-text">{subtitle.subtitle}</p>
+                                {categories.nodes.map(cat => {
+                                    return (
+                                        <Link to={`/categories/${cat.slug}`} class="btn btn-link btn-marketing">{cat.name}</Link>
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>
@@ -40,6 +45,12 @@ export const query = graphql`
                 content
                 subtitle {
                     subtitle
+                }
+                categories {
+                    nodes {
+                        name
+                        slug
+                    }
                 }
             }
         }
