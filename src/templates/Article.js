@@ -4,7 +4,7 @@ import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 
 const ArticleTemplate = ({ data }) => {
-    const { title, content, subtitle, categories } = data.wpgraphql.post;
+    const { title, date, content, subtitle, categories } = data.wpgraphql.post;
     return (
         <Layout>
             <SEO title={title} />
@@ -20,6 +20,8 @@ const ArticleTemplate = ({ data }) => {
                                         <Link to={`/categories/${cat.slug}`} class="btn btn-link btn-marketing">{cat.name}</Link>
                                     )
                                 })}
+                                <br />
+                                <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link>
                             </div>
                         </div>
                     </div>
@@ -42,6 +44,7 @@ export const query = graphql`
         wpgraphql {
             post(id: $id) {
                 title
+                date
                 content
                 subtitle {
                     subtitle
