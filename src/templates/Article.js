@@ -5,7 +5,16 @@ import SEO from '../components/seo'
 import SocialShare from '../components/social'
 
 const ArticleTemplate = ({ data }) => {
-    const { title, date, slug, content, subtitle, categories, featuredImage } = data.wpgraphql.post;
+    const { 
+        title, 
+        date, 
+        slug, 
+        content, 
+        subtitle, 
+        categories, 
+        featuredImage, 
+        author } = data.wpgraphql.post;
+
     return (
         <Layout>
             <SEO title={title} />
@@ -32,8 +41,15 @@ const ArticleTemplate = ({ data }) => {
             </header>
             <section class="bg-white py-10">
                 <div class="container">
-                    <img src={featuredImage.node.sourceUrl} alt={featuredImage.node.altText} class="aligncenter" style={{width: '100%', marginBottom: '2%'}} />
-                    <p>Last updated on <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link></p>
+                    <img src={featuredImage.node.sourceUrl} alt={featuredImage.node.altText} class="aligncenter" style={{width: '100%', marginBottom: '5%'}} />
+                    <p style={{display: "flex", justifyContent: 'space-between'}}>
+                        <span>
+                            Last updated on <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link>
+                        </span>
+                        <span>
+                            Written by <Link to={`/`} class="page-header-text">{author.node.name}</Link>
+                        </span>
+                    </p>
                     <SocialShare slug={slug} title={title} />
                     <article dangerouslySetInnerHTML={{ __html: content }} />
                     <SocialShare slug={slug} title={title} />
@@ -66,6 +82,12 @@ export const query = graphql`
                     node {
                         sourceUrl
                         altText
+                    }
+                }
+                author {
+                    node {
+                        id
+                        name
                     }
                 }
             }
