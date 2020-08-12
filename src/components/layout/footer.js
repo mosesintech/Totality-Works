@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 const Footer = () => {
     return (<>
         <div id="layoutDefault_footer">
             <footer class="footer pt-10 pb-5 mt-auto bg-white footer-light">
                 <div class="container">
-                    <div class="row">
+                    {/* <div class="row">
                         <div class="col-lg-3">
                             <div class="footer-brand">Totality Works</div>
                             <div class="mb-3">What you need, we have.</div>
@@ -52,14 +53,15 @@ const Footer = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <hr class="my-5" />
                     <div class="row align-items-center">
-                        <div class="col-md-6 small">Copyright &copy; <a href="/">Totality Works</a> 2020</div>
+                        <div class="col-md-6 small">Copyright &copy; <Link to={`/`}>Totality Works</Link> 2020</div>
                         <div class="col-md-6 text-md-right small">
-                            <a href="/">Privacy Policy</a>
+                            <p>(214)-868-0625 <address>608 E Hickory St #128, Denton, TX 76205</address></p>
+                            {/* <a href="/">Privacy Policy</a>
                             &middot;
-                            <a href="/">Terms &amp; Conditions</a>
+                            <a href="/">Terms &amp; Conditions</a> */}
                         </div>
                     </div>
                 </div>
