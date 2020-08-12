@@ -4,7 +4,7 @@ import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 
 const ArticleTemplate = ({ data }) => {
-    const { title, content } = data.wpgraphql.post;
+    const { title, content, subtitle } = data.wpgraphql.post;
     return (
         <Layout>
             <SEO title={title} />
@@ -14,7 +14,7 @@ const ArticleTemplate = ({ data }) => {
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <h1 class="page-header-title mb-3">{title}</h1>
-                                <p class="page-header-text">Our company culture, and how we do things</p>
+                                <p class="page-header-text">{subtitle.subtitle}</p>
                             </div>
                         </div>
                     </div>
@@ -38,6 +38,9 @@ export const query = graphql`
             post(id: $id) {
                 title
                 content
+                subtitle {
+                    subtitle
+                }
             }
         }
     }
