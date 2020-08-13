@@ -44,10 +44,16 @@ const ArticleTemplate = ({ data }) => {
                     <img src={featuredImage.node.sourceUrl} alt={featuredImage.node.altText} class="aligncenter" style={{width: '100%', marginBottom: '5%'}} />
                     <p style={{display: "flex", justifyContent: 'space-between'}}>
                         <span>
-                            Last updated on <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link>
+                            Last updated on 
+                            {/* <Link to={`/`} class="page-header-text"> */}
+                            &nbsp;{date.split("T").shift()}
+                            {/* </Link> */}
                         </span>
                         <span>
-                            Written by <Link to={`/authors/${author.node.name}`} class="page-header-text">{author.node.name}</Link>
+                            Written by 
+                            {/* <Link to={`/authors/${author.node.name}`} class="page-header-text"> */}
+                            &nbsp;{author.node.name}
+                            {/* </Link> */}
                         </span>
                     </p>
                     <SocialShare slug={slug} title={title} />
