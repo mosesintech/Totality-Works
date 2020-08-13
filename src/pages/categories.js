@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 
-const IndexPage = ({ data }) => {
+const CategoriesPage = ({ data }) => {
     const cats = data.wpgraphql.categories.edges
   return (
   <Layout>
@@ -44,7 +44,7 @@ const IndexPage = ({ data }) => {
   )
 }
 
-export default IndexPage
+export default CategoriesPage
 
 export const query = graphql`
   query {
