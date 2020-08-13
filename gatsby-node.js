@@ -2,6 +2,7 @@ const path = require('path')
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const { createPage } = actions
     const ArticleTemplate = path.resolve('./src/templates/Article.js')
+    const CategoriesTemplate = path.resolve('./src/templates/Categories.js')
     const PageTemplate = path.resolve('./src/templates/Page.js')
     const result = await graphql(`
     query {
@@ -16,6 +17,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 nodes {
                     id
                     slug
+                }
+            }
+            categories(first: 10000) {
+                edges {
+                    node {
+                        id
+                        slug
+                    }
                 }
             }
         }
@@ -42,6 +51,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             component: ArticleTemplate,
             context: {
                 id: article.id,
+            },
+        })
+    })
+    const Categories = result.data.wpgraphql.categories.edges
+    Categories.forEach(cat => {
+        createPage({
+            path: `/categories/${cat.node.slug}`,
+            component: CategoriesTemplate,
+            context: {
+                id: cat.node.id,
             },
         })
     })

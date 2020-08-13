@@ -1,19 +1,24 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import Layout from '../layout/layout'
-import SEO from '../seo'
+import { Link, graphql } from 'gatsby'
+import Layout from '../components/layout/layout'
+import SEO from '../components/seo'
 
-const Articles = ({ title, content, edges }) => {
+const CategoriesTemplate = ({ data }) => {
+    const {
+        name,
+        description,
+        posts
+    } = data.wpgraphql.category;
     return (
         <Layout>
-            <SEO title={title} />
+            <SEO title={name} />
             <header class="page-header page-header-dark bg-gradient-primary-to-secondary">
                 <div class="page-header-content pt-10">
                     <div class="container text-center">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                                <h1 class="page-header-title mb-3">{title}</h1>
-                                <p class="page-header-text" dangerouslySetInnerHTML={{ __html: content }} />
+                                <h1 class="page-header-title mb-3">{name}</h1>
+                                <p class="page-header-text">{description}</p>
                             </div>
                         </div>
                     </div>
@@ -25,7 +30,7 @@ const Articles = ({ title, content, edges }) => {
             <section class="bg-white py-10">
                 <div class="container">
                 <ul style={{ listStyle: "none" }}>
-                  {edges.map(post => (
+                  {posts.edges.map(post => (
                     <li style={{ padding: "20px 0", borderBottom: "1px solid #ccc" }}>
                       <Link to={`/articles/${post.node.slug}`} style={{ display: "flex", color: "black", textDecoration: "none" }} >
                         <img src={post.node.author.node.avatar.url} alt={post.node.author.node.name} style={{ width: "16%", marginRight: 20 }} />
@@ -34,14 +39,7 @@ const Articles = ({ title, content, edges }) => {
                             <p style={{ margin: 0, color: "grey" }}>
                                 Written by {post.node.author.node.name} on {post.node.date.split("T").shift()}
                             </p>
-                            <span>
                             <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
-                            {/* {post.node.categories.edges.map(cat => {
-                                    return (
-                                        <span class="text-md-right small">{cat.node.name}</span>
-                                    )
-                            })} */}
-                            </span>
                         </div>
                       </Link>
                     </li>
@@ -53,4 +51,42 @@ const Articles = ({ title, content, edges }) => {
     )
 }
 
-export default Articles
+export default CategoriesTemplate
+
+export const query = graphql`
+    query($id: ID!) {
+        wpgraphql {
+            category(id: $id) {
+                name
+                description
+                posts {
+                    edges {
+                        node {
+                            title
+                            excerpt
+                            slug
+                            date
+                            categories {
+                                edges {
+                                    node {
+                                        name
+                                        slug
+                                    }
+                                }
+                            }
+                            author {
+                                node {
+                                    name
+                                    nickname
+                                    avatar(size: 150) {
+                                        url
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }    
+`

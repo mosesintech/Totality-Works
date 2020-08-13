@@ -47,7 +47,7 @@ const ArticleTemplate = ({ data }) => {
                             Last updated on <Link to={`/`} class="page-header-text">{date.split("T").shift()}</Link>
                         </span>
                         <span>
-                            Written by <Link to={`/`} class="page-header-text">{author.node.name}</Link>
+                            Written by <Link to={`/authors/${author.node.name}`} class="page-header-text">{author.node.name}</Link>
                         </span>
                     </p>
                     <SocialShare slug={slug} title={title} />
@@ -72,7 +72,7 @@ export const query = graphql`
                 subtitle {
                     subtitle
                 }
-                categories {
+                categories(first: 10000) {
                     nodes {
                         name
                         slug

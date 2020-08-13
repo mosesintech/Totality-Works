@@ -37,6 +37,14 @@ export const query = graphql`
                         excerpt
                         slug
                         date
+                        categories {
+                            edges {
+                                node {
+                                    name
+                                    slug
+                                }
+                            }
+                        }
                         author {
                             node {
                                 name
