@@ -41,7 +41,7 @@ export const query = graphql`
                             node {
                                 name
                                 nickname
-                                avatar {
+                                avatar(size: 150) {
                                    url
                                 }
                             }

@@ -28,7 +28,7 @@ const Articles = ({ title, content, edges }) => {
                   {edges.map(post => (
                     <li style={{ padding: "20px 0", borderBottom: "1px solid #ccc" }}>
                       <Link to={`/articles/${post.node.slug}`} style={{ display: "flex", color: "black", textDecoration: "none" }} >
-                        <img src={post.node.author.node.avatar.url} alt={post.node.author.node.name} style={{ width: "25%", marginRight: 20 }} />
+                        <img src={post.node.author.node.avatar.url} alt={post.node.author.node.name} style={{ width: "16%", marginRight: 20 }} />
                         <div style={{ width: "75%" }}>
                             <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} style={{ marginBottom: 0 }} />
                             <p style={{ margin: 0, color: "grey" }}>
