@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../layout/layout'
 import SEO from '../seo'
 
-const Articles = ({ title, content }) => {
+const Articles = ({ title, content, edges }) => {
     return (
         <Layout>
             <SEO title={title} />
@@ -22,7 +22,22 @@ const Articles = ({ title, content }) => {
                 </div>
             </header>
             <section class="bg-white py-10">
-                <div class="container" dangerouslySetInnerHTML={{ __html: content }} />
+                <ul>
+                  <pre>
+                  {JSON.stringify(edges, null, 2)}
+                  </pre>
+                  {/* {data.wpgraphql.posts.edges.map(post => (
+                    <li>
+                      <Link to={`/news/${post.node.slug}`} >
+                          <h3>{post.node.title}</h3>
+                          <p>
+                            Written on {post.node.dateGmt}
+                          </p>
+                          <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+                      </Link>
+                    </li>
+                  ))} */}
+                </ul>
             </section>
         </Layout>
     )

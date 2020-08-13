@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../layout/layout'
 import SEO from '../seo'
 
-const Default = ({ title, content, aboutByline }) => {
+const Services = ({ title, content }) => {
     return (
         <Layout>
             <SEO title={title} />
@@ -12,7 +12,7 @@ const Default = ({ title, content, aboutByline }) => {
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <h1 class="page-header-title mb-3">{title}</h1>
-                                <p class="page-header-text">{aboutByline.aboutByline}</p>
+                                <p class="page-header-text" dangerouslySetInnerHTML={{ __html: content }} />
                             </div>
                         </div>
                     </div>
@@ -28,4 +28,4 @@ const Default = ({ title, content, aboutByline }) => {
     )
 }
 
-export default Default
+export default Services

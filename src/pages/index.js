@@ -20,7 +20,8 @@ const IndexPage = ({ data }) => {
     stat,
     statCtaButtonText,
     statCtaButtonUrl,
-    testimonial } = data.wpgraphql.page.HomeContent;
+    // testimonial 
+    } = data.wpgraphql.page.HomeContent;
 
   return (
   <Layout>
