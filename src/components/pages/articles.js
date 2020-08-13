@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import Layout from '../layout/layout'
 import SEO from '../seo'
 
@@ -22,22 +23,24 @@ const Articles = ({ title, content, edges }) => {
                 </div>
             </header>
             <section class="bg-white py-10">
-                <ul>
-                  <pre>
-                  {JSON.stringify(edges, null, 2)}
-                  </pre>
-                  {/* {data.wpgraphql.posts.edges.map(post => (
-                    <li>
-                      <Link to={`/news/${post.node.slug}`} >
-                          <h3>{post.node.title}</h3>
-                          <p>
-                            Written on {post.node.dateGmt}
-                          </p>
-                          <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+                <div class="container">
+                <ul style={{ listStyle: "none" }}>
+                  {edges.map(post => (
+                    <li style={{ padding: "20px 0", borderBottom: "1px solid #ccc" }}>
+                      <Link to={`/articles/${post.node.slug}`} style={{ display: "flex", color: "black", textDecoration: "none" }} >
+                        <img src={post.node.author.node.avatar.url} alt={post.node.author.node.name} style={{ width: "25%", marginRight: 20 }} />
+                        <div style={{ width: "75%" }}>
+                            <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} style={{ marginBottom: 0 }} />
+                            <p style={{ margin: 0, color: "grey" }}>
+                                Written by {post.node.author.node.name} on {post.node.date.split("T").shift()}
+                            </p>
+                            <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
+                        </div>
                       </Link>
                     </li>
-                  ))} */}
+                  ))}
                 </ul>
+                </div>
             </section>
         </Layout>
     )

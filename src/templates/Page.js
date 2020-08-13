@@ -35,10 +35,15 @@ export const query = graphql`
                     node {
                         title
                         excerpt
-                        featuredImage {
+                        slug
+                        date
+                        author {
                             node {
-                                sourceUrl
-                                altText
+                                name
+                                nickname
+                                avatar {
+                                   url
+                                }
                             }
                         }
                     }
