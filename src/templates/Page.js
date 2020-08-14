@@ -29,6 +29,26 @@ export const query = graphql`
                 aboutByline {
                     aboutByline
                 }
+                ServicesContent {
+                    servicesOffered {
+                        serviceName
+                        serviceDescription
+                        serviceImage {
+                            sourceUrl
+                            altText
+                        }
+                        imageAlignment
+                    }
+                    statsHeader
+                    statsText
+                    stats {
+                        header
+                        number
+                        text
+                    }
+                    statCtaButtonText
+                    statCtaButtonLink
+                    }
             }
             posts {
                 edges {
