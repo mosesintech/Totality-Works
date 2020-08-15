@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Default from '../components/pages/default'
 import Articles from '../components/pages/articles'
 import Services from '../components/pages/services'
+import Contact from '../components/pages/contact'
 
 const PageTemplate = ({ data }) => {
     const page = data.wpgraphql.page
@@ -13,6 +14,8 @@ const PageTemplate = ({ data }) => {
           return <Articles {...page} {...posts} />
         case 'Services':
           return <Services {...page} />
+        case 'Contact':
+          return <Contact {...page} />
         default:
           return <Default {...page} />
     }
