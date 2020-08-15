@@ -32,7 +32,7 @@ module.exports = {
       options: {
         typeName: 'WPGraphQL',
         fieldName: 'wpgraphql',
-        url: 'http://localhost:8888/totalityworks.com/graphql',
+        url: 'http://content.totalityworks.com/graphql',
         refetchInterval: 60
       }
     },
