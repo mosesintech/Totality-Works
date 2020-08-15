@@ -2,6 +2,7 @@ import React from 'react'
 // import { Link } from 'gatsby'
 import Layout from '../layout/layout'
 import SEO from '../seo'
+import ContactForm from '../contactForm'
 
 const Contact = ({ title, content }) => {
     
@@ -94,25 +95,7 @@ const Contact = ({ title, content }) => {
                             <a href="#!">info@totalityworks.com</a> */}
                         </div>
                     </div>
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label class="text-dark" htmlFor="inputName">Full name</label>
-                                <input class="form-control py-4" id="inputName" type="text" placeholder="Full name" />
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="text-dark" htmlFor="inputEmail">Email</label>
-                                <input class="form-control py-4" id="inputEmail" type="email" placeholder="name@example.com" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="text-dark" htmlFor="inputMessage">Message</label>
-                            <textarea class="form-control py-3" id="inputMessage" type="text" placeholder="Enter your message..." rows="4"></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary btn-marketing mt-4" type="submit">Submit Request</button>
-                        </div>
-                    </form>
+                    <ContactForm />
                 </div>
             </section>
         </Layout>
