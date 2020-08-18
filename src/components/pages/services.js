@@ -35,12 +35,12 @@ const Services = ({ title, content, ServicesContent }) => {
                     {servicesOffered.map(service => {
                         return (
                             <div class="row">
-                                <h3>{service.serviceName}</h3>
-                                {/* <span style={{ display: "flex", justifyContent: 'space-between' }} > */}
-                                    <p>{service.serviceDescription}</p>
-                                    <img src={service.serviceImage.sourceUrl} alt={service.serviceImage.altText} class={`align${service.imageAlignment}`} />
-                                {/* </span> */}
-                                <hr />
+                                <h2 style={{marginBottom: '2%'}}>{service.serviceName}</h2>
+                                <span style={{ display: "flex", justifyContent: 'space-between' }} >
+                                    <Link to="/contact" style={{width: '60%'}}><img src={service.serviceImage.sourceUrl} alt={service.serviceImage.altText} class={`align${service.serviceImage.imageAlignment}`} style={{width: '90%'}} /></Link>
+                                    <p style={{width: '100%'}}>{service.serviceDescription}</p>
+                                </span>
+                                <hr class="my-5"/>
                             </div>
                         )
                     })}
