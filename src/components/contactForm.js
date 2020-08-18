@@ -22,12 +22,7 @@ const ContactForm = () => {
          }
          return errors;
        }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
-       }}
+       
      >
        {({
          values,
@@ -35,11 +30,9 @@ const ContactForm = () => {
          touched,
          handleChange,
          handleBlur,
-         handleSubmit,
-         isSubmitting,
        }) => (
            <>
-         <form onSubmit={handleSubmit}>
+         <form action="https://send.pageclip.co/aZ4JXAeO0ZIUPzLyFu3QqdDT9SFFI949" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label class="text-dark" htmlFor="inputName">Full name</label>
@@ -58,7 +51,7 @@ const ContactForm = () => {
                 {errors.message && touched.message && errors.message}
             </div>
             <div class="text-center">
-                <button class="btn btn-primary btn-marketing mt-4" type="submit" disabled={isSubmitting}>Submit Request</button>
+                <button class="btn btn-primary btn-marketing mt-4" type="submit">Submit Request</button>
             </div>
         </form>
         </>
