@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
+import moment from 'moment/moment'
 
 const CategoriesTemplate = ({ data }) => {
     const {
@@ -37,7 +38,7 @@ const CategoriesTemplate = ({ data }) => {
                         <div style={{ width: "75%" }}>
                             <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} style={{ marginBottom: 0 }} />
                             <p style={{ margin: 0, color: "grey" }}>
-                                Written by {post.node.author.node.name} on {post.node.date.split("T").shift()}
+                                Written by {post.node.author.node.name} on {moment(post.node.date).format('MMMM D, YYYY')}
                             </p>
                             <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
                         </div>

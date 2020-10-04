@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 import SocialShare from '../components/social'
+import moment from 'moment/moment'
 
 const ArticleTemplate = ({ data }) => {
     const { 
@@ -46,7 +47,7 @@ const ArticleTemplate = ({ data }) => {
                         <span>
                             Last updated on 
                             {/* <Link to={`/`} class="page-header-text"> */}
-                            &nbsp;{date.split("T").shift()}
+                            &nbsp;{moment(date).format('MMMM D, YYYY')}
                             {/* </Link> */}
                         </span>
                         <span>

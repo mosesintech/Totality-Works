@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Layout from '../layout/layout'
 import SEO from '../seo'
+import moment from 'moment/moment'
 
 const Articles = ({ title, content, edges }) => {
     return (
@@ -32,7 +33,7 @@ const Articles = ({ title, content, edges }) => {
                         <div style={{ width: "75%" }}>
                             <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} style={{ marginBottom: 0 }} />
                             <p style={{ margin: 0, color: "grey" }}>
-                                Written by {post.node.author.node.name} on {post.node.date.split("T").shift()}
+                                Written by {post.node.author.node.name} on {moment(post.node.date).format('MMMM D, YYYY')}
                             </p>
                             <span>
                             <div dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />

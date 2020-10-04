@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Default from '../components/pages/default'
 import Articles from '../components/pages/articles'
 import Services from '../components/pages/services'
+import Portfolio from '../components/pages/portfolio'
 import Contact from '../components/pages/contact'
 
 const PageTemplate = ({ data }) => {
@@ -16,6 +17,8 @@ const PageTemplate = ({ data }) => {
           return <Services {...page} />
         case 'Contact':
           return <Contact {...page} />
+        case 'Portfolio':
+            return <Portfolio {...page}/>
         default:
           return <Default {...page} />
     }
@@ -31,6 +34,20 @@ export const query = graphql`
                 content
                 aboutByline {
                     aboutByline
+                }
+                PortfolioContent {
+                    pieces {
+                        title
+                        link
+                        screenshot {
+                            sourceUrl
+                            altText
+                        }
+                    }
+                    ctaTitle
+                    ctaText
+                    ctaButtonText
+                    ctaButtonLink
                 }
                 ServicesContent {
                     servicesOffered {
